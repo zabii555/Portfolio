@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zohaib - Frontend Developer Portfolio</title>
+    <link rel="icon" type="image/png" href="Image/za.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Favicon ko circle mein fit karne ke liye */
+link[rel="icon"] {
+    border-radius: 50%;
+}
+
+/* Ya phir image ko circle crop karne ke liye */
+img.circle-icon {
+    border-radius: 50%;
+    object-fit: cover;
+}
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f9f9f9;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #e67e22;
+            border-radius: 5px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h2 {
+            color: #e67e22;
+            font-size: 1.8rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #e67e22;
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1%, transparent 1%);
+            background-size: 50px 50px;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        .profile-img-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            border: 4px solid white;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .profile-img-container:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h1 span {
+            color: #ffd700;
+        }
+
+        .hero-content .typed-text {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #e67e22;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #d35400;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #e67e22;
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            color: #333;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #e67e22;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: #e67e22;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .info-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .info-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-list li i {
+            color: #e67e22;
+            font-size: 1.2rem;
+            width: 30px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: transform 0.3s;
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Projects Section */
+        .projects {
+            background: #f9f9f9;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .project-desc {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: #f0f0f0;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .project-link {
+            color: #e67e22;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .project-link:hover {
+            gap: 10px;
+        }
+
+        /* Services Section */
+        .services {
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 2rem;
+            background: #f9f9f9;
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: #e67e22;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            width: 50px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: #e67e22;
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background: #e67e22;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #d35400;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2><i class="fas fa-code"></i> Zohaib</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="profile-img-container">
+                <!-- Yahan apni photo add karein -->
+                <img id="profileImg" src="Image/zabii.png" alt="Zohaib">
+            </div>
+            <h1>Hi, I'm <span>Zohaib</span></h1>
+            <div class="typed-text">Frontend Developer | 12th Grade | Creative Designer</div>
+            <div class="btn-group">
+                <a href="#contact" class="btn btn-primary">Hire Me</a>
+                <!-- CV Download Button - Aap apni CV yahan upload karein -->
+                <button class="btn btn-secondary" id="cvBtn">
+                    <i class="fas fa-download"></i> Download CV
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>I'm Zohaib, A Passionate Frontend Developer</h3>
+                    <p>I'm a 12th-grade student with a burning passion for web development. I create beautiful, responsive, and user-friendly websites that leave a lasting impression.</p>
+                    <p>Despite my young age, I've already completed numerous projects and continuously learning new technologies to stay ahead in the field.</p>
+                    <ul class="info-list">
+                        <li><i class="fas fa-user"></i> <strong>Name:</strong> Zohaib</li>
+                        <li><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> 12th Grade</li>
+                        <li><i class="fas fa-code"></i> <strong>Role:</strong> Frontend Developer</li>
+                        <li><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Pakistan</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>My Skills</h3>
+                    <div class="skills">
+                        <span class="skill-badge">HTML5</span>
+                        <span class="skill-badge">CSS3</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">React.js</span>
+                        <span class="skill-badge">Bootstrap</span>
+                        <span class="skill-badge">Tailwind CSS</span>
+                        <span class="skill-badge">Git & GitHub</span>
+                        <span class="skill-badge">Responsive Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">What I Offer</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Web Development</h3>
+                    <p>Modern, responsive websites that work on all devices</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-palette"></i>
+                    <h3>UI/UX Design</h3>
+                    <p>Beautiful and intuitive user interfaces</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Responsive Design</h3>
+                    <p>Websites that look great on any screen size</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Performance Optimization</h3>
+                    <p>Fast loading and optimized websites</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+92 123 4567890</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>zohaib@frontend.dev</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Pakistan</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Follow Me</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Zohaib - Frontend Developer. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Projects Data
+        const projects = [
+            {
+                title: "Restaurant Website",
+                description: "A fully responsive restaurant website with dynamic menu cards",
+                tech: ["HTML", "CSS", "JavaScript"],
+                image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400"
+            },
+            {
+                title: "E-commerce Store",
+                description: "Modern e-commerce platform with shopping cart",
+                tech: ["React", "CSS", "Firebase"],
+                image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400"
+            },
+            {
+                title: "Portfolio Website",
+                description: "Professional portfolio for a creative agency",
+                tech: ["HTML5", "CSS3", "JavaScript"],
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400"
+            }
+        ];
+
+        // Load Projects
+        function loadProjects() {
+            const projectsGrid = document.getElementById('projectsGrid');
+            if (!projectsGrid) return;
+
+            projectsGrid.innerHTML = '';
+            
+            projects.forEach(project => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                card.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-desc">${project.description}</p>
+                        <div class="project-tech">
+                            ${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+                        </div>
+                        <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                `;
+                projectsGrid.appendChild(card);
+            });
+        }
+
+        // CV Download Function
+        document.getElementById('cvBtn').addEventListener('click', function() {
+            // Aap yahan apni CV ka link daal sakte hain
+            // Option 1: Direct download link
+            // window.location.href = 'path/to/your-cv.pdf';
+            
+            // Option 2: Create a sample CV (temporary)
+            alert('Please add your CV file in the project folder and update the link!\n\nInstructions:\n1. Place your CV PDF in the same folder\n2. Name it "zohaib-cv.pdf"\n3. Uncomment the code in script.js');
+            
+            // Actual code for CV download (uncomment after adding CV):
+            /*
+            const cvUrl = 'zohaib-cv.pdf'; // Apni CV ka naam yahan likhein
+            const link = document.createElement('a');
+            link.href = cvUrl;
+            link.download = 'Zohaib_CV.pdf';
+            link.click();
+            */
+        });
+
+        // Profile Image Upload
+        // Aap apni photo yahan set kar sakte hain
+        // Option: Click on profile image to upload
+        const profileImg = document.getElementById('profileImg');
+        profileImg.addEventListener('click', function() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    profileImg.src = event.target.result;
+                    localStorage.setItem('profileImage', event.target.result);
+                };
+                reader.readAsDataURL(file);
+            };
+            input.click();
+        });
+
+        // Load saved profile image
+        const savedImage = localStorage.getItem('profileImage');
+        if (savedImage) {
+            profileImg.src = savedImage;
+        }
+
+        // Contact Form Submit
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255,255,255,0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(255,255,255,0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+
+        // Update Active Link on Scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Typing Animation Effect
+        const texts = ["Frontend Developer", "12th Grade Student", "Creative Designer", "Problem Solver"];
+        let count = 0;
+        let index = 0;
+        let currentText = '';
+        let letter = '';
+
+        function type() {
+            if (count === texts.length) {
+                count = 0;
+            }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+            
+            document.querySelector('.typed-text').textContent = letter;
+            
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(() => {
+                    type();
+                }, 2000);
+            } else {
+                setTimeout(type, 100);
+            }
+        }
+
+        type();
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProjects();
+            console.log('Portfolio loaded successfully!');
+        });
+    </script>
+</body>
+</html>
