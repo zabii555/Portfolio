@@ -15,16 +15,6 @@
             box-sizing: border-box;
         }
 
-        /* Favicon ko circle mein fit karne ke liye */
-link[rel="icon"] {
-    border-radius: 50%;
-}
-
-/* Ya phir image ko circle crop karne ke liye */
-img.circle-icon {
-    border-radius: 50%;
-    object-fit: cover;
-}
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
@@ -590,14 +580,12 @@ img.circle-icon {
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="profile-img-container">
-                <!-- Yahan apni photo add karein -->
                 <img id="profileImg" src="Image/zabii.png" alt="Zohaib">
             </div>
             <h1>Hi, I'm <span>Zohaib</span></h1>
             <div class="typed-text">Frontend Developer | 12th Grade | Creative Designer</div>
             <div class="btn-group">
                 <a href="#contact" class="btn btn-primary">Hire Me</a>
-                <!-- CV Download Button - Aap apni CV yahan upload karein -->
                 <button class="btn btn-secondary" id="cvBtn">
                     <i class="fas fa-download"></i> Download CV
                 </button>
@@ -730,25 +718,28 @@ img.circle-icon {
     </footer>
 
     <script>
-        // Projects Data
+        // Projects Data - Restaurant wale project mein aapka link add hai ✅
         const projects = [
             {
                 title: "Restaurant Website",
                 description: "A fully responsive restaurant website with dynamic menu cards",
                 tech: ["HTML", "CSS", "JavaScript"],
-                image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400"
+                image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400",
+                link: "https://zabii555.github.io/Resturant-Frontend-Website/"
             },
             {
                 title: "E-commerce Store",
                 description: "Modern e-commerce platform with shopping cart",
                 tech: ["React", "CSS", "Firebase"],
-                image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400"
+                image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400",
+                link: "#"
             },
             {
                 title: "Portfolio Website",
                 description: "Professional portfolio for a creative agency",
                 tech: ["HTML5", "CSS3", "JavaScript"],
-                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400"
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400",
+                link: "#"
             }
         ];
 
@@ -770,7 +761,7 @@ img.circle-icon {
                         <div class="project-tech">
                             ${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
                         </div>
-                        <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        <a href="${project.link}" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                     </div>
                 `;
                 projectsGrid.appendChild(card);
@@ -779,26 +770,10 @@ img.circle-icon {
 
         // CV Download Function
         document.getElementById('cvBtn').addEventListener('click', function() {
-            // Aap yahan apni CV ka link daal sakte hain
-            // Option 1: Direct download link
-            // window.location.href = 'path/to/your-cv.pdf';
-            
-            // Option 2: Create a sample CV (temporary)
             alert('Please add your CV file in the project folder and update the link!\n\nInstructions:\n1. Place your CV PDF in the same folder\n2. Name it "zohaib-cv.pdf"\n3. Uncomment the code in script.js');
-            
-            // Actual code for CV download (uncomment after adding CV):
-            /*
-            const cvUrl = 'zohaib-cv.pdf'; // Apni CV ka naam yahan likhein
-            const link = document.createElement('a');
-            link.href = cvUrl;
-            link.download = 'Zohaib_CV.pdf';
-            link.click();
-            */
         });
 
         // Profile Image Upload
-        // Aap apni photo yahan set kar sakte hain
-        // Option: Click on profile image to upload
         const profileImg = document.getElementById('profileImg');
         profileImg.addEventListener('click', function() {
             const input = document.createElement('input');
