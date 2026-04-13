@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zohaib - Frontend Developer Portfolio</title>
+    <title>Zohaib | Modern Frontend Developer Portfolio</title>
     <link rel="icon" type="image/png" href="Image/za.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,26 +19,26 @@
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f9f9f9;
+            background: #0f0f0f;
         }
 
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: #1a1a1a;
         }
 
         ::-webkit-scrollbar-thumb {
             background: #e67e22;
-            border-radius: 5px;
+            border-radius: 10px;
         }
 
         .navbar {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             position: fixed;
             width: 100%;
             top: 0;
@@ -56,7 +56,10 @@
         }
 
         .logo h2 {
-            color: #e67e22;
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             font-size: 1.8rem;
         }
 
@@ -68,14 +71,30 @@
 
         .nav-link {
             text-decoration: none;
-            color: #333;
+            color: #fff;
             font-weight: 500;
             transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #e67e22, #f39c12);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
         }
 
         .nav-link:hover {
             color: #e67e22;
-            transform: translateY(-2px);
         }
 
         .hamburger {
@@ -87,14 +106,14 @@
         .hamburger span {
             width: 25px;
             height: 3px;
-            background: #333;
+            background: #fff;
             margin: 3px 0;
             transition: 0.3s;
         }
 
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -106,16 +125,17 @@
         .hero::before {
             content: '';
             position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1%, transparent 1%);
-            background-size: 50px 50px;
-            animation: moveBackground 20s linear infinite;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(230,126,34,0.1) 0%, transparent 50%);
         }
 
-        @keyframes moveBackground {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 80%, rgba(243,156,18,0.08) 0%, transparent 50%);
         }
 
         .hero-content {
@@ -126,15 +146,13 @@
         }
 
         .profile-img-container {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             margin: 0 auto 2rem;
             border-radius: 50%;
-            border: 4px solid white;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            padding: 3px;
             transition: transform 0.3s;
-            cursor: pointer;
         }
 
         .profile-img-container:hover {
@@ -144,21 +162,24 @@
         .profile-img-container img {
             width: 100%;
             height: 100%;
+            border-radius: 50%;
             object-fit: cover;
+            border: 3px solid #0f0f0f;
         }
 
         .hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-        }
-
-        .hero-content h1 span {
-            color: #ffd700;
+            background: linear-gradient(135deg, #fff, #e67e22);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .hero-content .typed-text {
             font-size: 1.5rem;
             margin-bottom: 2rem;
+            color: #e67e22;
         }
 
         .btn-group {
@@ -181,25 +202,24 @@
         }
 
         .btn-primary {
-            background: #e67e22;
+            background: linear-gradient(135deg, #e67e22, #f39c12);
             color: white;
+            box-shadow: 0 4px 15px rgba(230,126,34,0.3);
         }
 
         .btn-primary:hover {
-            background: #d35400;
             transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 25px rgba(230,126,34,0.4);
         }
 
         .btn-secondary {
             background: transparent;
             color: white;
-            border: 2px solid white;
+            border: 2px solid #e67e22;
         }
 
         .btn-secondary:hover {
-            background: white;
-            color: #e67e22;
+            background: #e67e22;
             transform: translateY(-3px);
         }
 
@@ -218,7 +238,7 @@
             font-size: 2.5rem;
             margin-bottom: 3rem;
             position: relative;
-            color: #333;
+            color: #fff;
         }
 
         .section-title::after {
@@ -229,11 +249,12 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: #e67e22;
+            background: linear-gradient(90deg, #e67e22, #f39c12);
+            border-radius: 3px;
         }
 
         .about {
-            background: white;
+            background: #0a0a0a;
         }
 
         .about-content {
@@ -250,6 +271,7 @@
         }
 
         .about-text p {
+            color: #aaa;
             margin-bottom: 1rem;
             line-height: 1.8;
         }
@@ -264,6 +286,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            color: #ccc;
         }
 
         .info-list li i {
@@ -280,7 +303,7 @@
         }
 
         .skill-badge {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #e67e22, #f39c12);
             color: white;
             padding: 8px 20px;
             border-radius: 50px;
@@ -293,7 +316,7 @@
         }
 
         .projects {
-            background: #f9f9f9;
+            background: #0f0f0f;
         }
 
         .projects-grid {
@@ -303,22 +326,29 @@
         }
 
         .project-card {
-            background: white;
-            border-radius: 15px;
+            background: #1a1a1a;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
             transition: all 0.3s;
+            border: 1px solid rgba(230,126,34,0.1);
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(230,126,34,0.2);
+            border-color: rgba(230,126,34,0.3);
         }
 
         .project-img {
             width: 100%;
-            height: 250px;
+            height: 280px;
             object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.05);
         }
 
         .project-content {
@@ -328,11 +358,11 @@
         .project-title {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: #333;
+            color: #fff;
         }
 
         .project-desc {
-            color: #666;
+            color: #aaa;
             margin-bottom: 1rem;
         }
 
@@ -344,10 +374,11 @@
         }
 
         .tech-tag {
-            background: #f0f0f0;
+            background: rgba(230,126,34,0.2);
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
+            color: #e67e22;
         }
 
         .project-link {
@@ -357,6 +388,7 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
+            transition: gap 0.3s;
         }
 
         .project-link:hover {
@@ -364,41 +396,51 @@
         }
 
         .services {
-            background: white;
+            background: #0a0a0a;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
         .service-card {
             text-align: center;
             padding: 2rem;
-            background: #f9f9f9;
-            border-radius: 15px;
+            background: #1a1a1a;
+            border-radius: 20px;
             transition: all 0.3s;
+            border: 1px solid rgba(230,126,34,0.1);
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-color: rgba(230,126,34,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         .service-card i {
             font-size: 3rem;
-            color: #e67e22;
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 1rem;
         }
 
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .service-card p {
+            color: #aaa;
         }
 
         .contact {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
             color: white;
         }
 
@@ -427,6 +469,16 @@
         .contact-item i {
             font-size: 2rem;
             width: 50px;
+            color: #e67e22;
+        }
+
+        .contact-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-item p {
+            color: #ccc;
         }
 
         .social-links {
@@ -436,20 +488,21 @@
         }
 
         .social-link {
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.2);
+            width: 45px;
+            height: 45px;
+            background: rgba(230,126,34,0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5rem;
+            color: #e67e22;
+            font-size: 1.3rem;
             transition: all 0.3s;
         }
 
         .social-link:hover {
             background: #e67e22;
+            color: white;
             transform: translateY(-3px);
         }
 
@@ -463,8 +516,17 @@
         .contact-form textarea {
             padding: 12px;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-family: inherit;
+            background: #1a1a1a;
+            color: white;
+            border: 1px solid rgba(230,126,34,0.2);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #e67e22;
         }
 
         .contact-form textarea {
@@ -473,11 +535,11 @@
         }
 
         .contact-form button {
-            background: #e67e22;
+            background: linear-gradient(135deg, #e67e22, #f39c12);
             color: white;
             padding: 12px;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -485,14 +547,16 @@
         }
 
         .contact-form button:hover {
-            background: #d35400;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230,126,34,0.3);
         }
 
         .footer {
-            background: #1a1a1a;
-            color: white;
+            background: #050505;
+            color: #888;
             text-align: center;
             padding: 2rem;
+            border-top: 1px solid rgba(230,126,34,0.1);
         }
 
         @keyframes fadeInUp {
@@ -506,47 +570,6 @@
             }
         }
 
-        /* CV Download Modal Style */
-        .cv-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .cv-modal-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            max-width: 400px;
-        }
-
-        .cv-modal-content h3 {
-            color: #e67e22;
-            margin-bottom: 1rem;
-        }
-
-        .cv-modal-content input {
-            width: 100%;
-            padding: 10px;
-            margin: 1rem 0;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-
-        .cv-modal-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
         @media (max-width: 768px) {
             .hamburger {
                 display: flex;
@@ -557,12 +580,12 @@
                 left: -100%;
                 top: 70px;
                 flex-direction: column;
-                background: white;
+                background: #0f0f0f;
                 width: 100%;
                 text-align: center;
                 transition: 0.3s;
                 padding: 2rem 0;
-                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+                border-bottom: 1px solid rgba(230,126,34,0.2);
             }
 
             .nav-menu.active {
@@ -571,6 +594,10 @@
 
             .hero-content h1 {
                 font-size: 2rem;
+            }
+
+            .hero-content .typed-text {
+                font-size: 1.1rem;
             }
 
             .about-content,
@@ -609,32 +636,16 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="profile-img-container">
-                <img id="profileImg" src="Image/zabii.png" alt="Zohaib" onerror="this.src='https://via.placeholder.com/200?text=Zohaib'">
+                <img id="profileImg" src="Image/zabii.png" alt="Zohaib" onerror="this.src='https://via.placeholder.com/180?text=Z'">
             </div>
             <h1>Hi, I'm <span>Zohaib</span></h1>
             <div class="typed-text">Frontend Developer | 12th Grade | Creative Designer</div>
             <div class="btn-group">
                 <a href="#contact" class="btn btn-primary">Hire Me</a>
-                <button class="btn btn-secondary" id="cvBtn">
-                    <i class="fas fa-download"></i> Download CV
-                </button>
+                <a href="#projects" class="btn btn-secondary">View Work</a>
             </div>
         </div>
     </section>
-
-    <!-- CV Download Modal -->
-    <div id="cvModal" class="cv-modal">
-        <div class="cv-modal-content">
-            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #e67e22;"></i>
-            <h3>Download My CV</h3>
-            <p>Click the button below to download my CV</p>
-            <a href="zohaib-cv.pdf" download="Zohaib_CV.pdf" class="btn btn-primary" style="margin: 1rem 0; display: inline-block;">Download CV <i class="fas fa-download"></i></a>
-            <div class="cv-modal-buttons">
-                <button id="closeModalBtn" class="btn" style="background: #ccc; color: #333;">Close</button>
-            </div>
-            <p style="font-size: 0.8rem; margin-top: 1rem; color: #999;">Note: Agar CV download nahi hota to mujhe contact karein</p>
-        </div>
-    </div>
 
     <section id="about" class="about">
         <div class="container">
@@ -744,7 +755,7 @@
                     <input type="text" placeholder="Your Name" required>
                     <input type="email" placeholder="Your Email" required>
                     <textarea placeholder="Your Message" required></textarea>
-                    <button type="submit">Send Message</button>
+                    <button type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
         </div>
@@ -755,28 +766,21 @@
     </footer>
 
     <script>
-        // Projects Data - Ab Naye Tab Mein Khulega ✅
+        // Projects Data with HD Images 🖼️
         const projects = [
             {
                 title: "Restaurant Website",
-                description: "A fully responsive restaurant website with dynamic menu cards. Click to view live demo.",
+                description: "A fully responsive restaurant website with dynamic menu cards. Modern UI with smooth animations.",
                 tech: ["HTML", "CSS", "JavaScript"],
-                image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400",
+                image: "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?w=800&h=500&fit=crop",
                 link: "https://zabii555.github.io/Resturant-Frontend-Website/"
             },
             {
-                title: "E-commerce Store",
-                description: "Modern e-commerce platform with shopping cart functionality",
-                tech: ["React", "CSS", "Firebase"],
-                image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400",
-                link: "#"
-            },
-            {
-                title: "Portfolio Website",
-                description: "Professional portfolio for a creative agency",
-                tech: ["HTML5", "CSS3", "JavaScript"],
-                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400",
-                link: "#"
+                title: "House Rental Website",
+                description: "Modern beachfront villa rental platform. Search properties by location, view luxury homes.",
+                tech: ["HTML", "CSS", "JavaScript", "Bootstrap Icons"],
+                image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=800&h=500&fit=crop",
+                link: "https://zabii555.github.io/EstateFlow-House-Rental-Frontend/"
             }
         ];
 
@@ -791,55 +795,19 @@
                 const card = document.createElement('div');
                 card.className = 'project-card';
                 card.innerHTML = `
-                    <img src="${project.image}" alt="${project.title}" class="project-img" onerror="this.src='https://via.placeholder.com/400x250?text=${project.title}'">
+                    <img src="${project.image}" alt="${project.title}" class="project-img" loading="lazy">
                     <div class="project-content">
                         <h3 class="project-title">${project.title}</h3>
                         <p class="project-desc">${project.description}</p>
                         <div class="project-tech">
                             ${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
                         </div>
-                        <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="project-link" onclick="return openInNewTab('${project.link}', event)">View Project <i class="fas fa-arrow-right"></i></a>
+                        <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                     </div>
                 `;
                 projectsGrid.appendChild(card);
             });
         }
-
-        // Yeh function ensure karega ke link naye tab mein khule aur portfolio open rahe
-        function openInNewTab(link, event) {
-            if (link === "#" || link === "") {
-                event.preventDefault();
-                alert("🚧 This project is coming soon! Stay tuned.");
-                return false;
-            }
-            // Link naye tab mein khulega, portfolio wahi rahega
-            window.open(link, '_blank');
-            event.preventDefault();
-            return false;
-        }
-
-        // CV Modal Functions
-        const cvModal = document.getElementById('cvModal');
-        const cvBtn = document.getElementById('cvBtn');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-
-        if (cvBtn) {
-            cvBtn.addEventListener('click', function() {
-                cvModal.style.display = 'flex';
-            });
-        }
-
-        if (closeModalBtn) {
-            closeModalBtn.addEventListener('click', function() {
-                cvModal.style.display = 'none';
-            });
-        }
-
-        window.addEventListener('click', function(e) {
-            if (e.target === cvModal) {
-                cvModal.style.display = 'none';
-            }
-        });
 
         // Profile Image Upload
         const profileImg = document.getElementById('profileImg');
@@ -871,20 +839,10 @@
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                alert('Thank you for your message! I will get back to you soon.');
+                alert('✨ Thank you for your message! I will get back to you soon.');
                 this.reset();
             });
         }
-
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255,255,255,0.98)';
-            } else {
-                navbar.style.background = 'rgba(255,255,255,0.95)';
-            }
-        });
 
         // Mobile Menu Toggle
         const hamburger = document.querySelector('.hamburger');
@@ -980,8 +938,7 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             loadProjects();
-            console.log('Portfolio loaded successfully!');
-            console.log('Restaurant Website Link: https://zabii555.github.io/Resturant-Frontend-Website/');
+            console.log('✨ Modern Portfolio with HD Images loaded successfully!');
         });
     </script>
 </body>
