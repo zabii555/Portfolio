@@ -22,7 +22,6 @@
             background: #f9f9f9;
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -36,7 +35,6 @@
             border-radius: 5px;
         }
 
-        /* Navbar */
         .navbar {
             background: rgba(255,255,255,0.95);
             backdrop-filter: blur(10px);
@@ -94,7 +92,6 @@
             transition: 0.3s;
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -137,6 +134,7 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: transform 0.3s;
+            cursor: pointer;
         }
 
         .profile-img-container:hover {
@@ -205,7 +203,6 @@
             transform: translateY(-3px);
         }
 
-        /* Section Styles */
         section {
             padding: 80px 0;
         }
@@ -235,7 +232,6 @@
             background: #e67e22;
         }
 
-        /* About Section */
         .about {
             background: white;
         }
@@ -296,7 +292,6 @@
             transform: translateY(-3px);
         }
 
-        /* Projects Section */
         .projects {
             background: #f9f9f9;
         }
@@ -368,7 +363,6 @@
             gap: 10px;
         }
 
-        /* Services Section */
         .services {
             background: white;
         }
@@ -403,7 +397,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Contact Section */
         .contact {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -495,7 +488,6 @@
             background: #d35400;
         }
 
-        /* Footer */
         .footer {
             background: #1a1a1a;
             color: white;
@@ -503,7 +495,6 @@
             padding: 2rem;
         }
 
-        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -515,7 +506,47 @@
             }
         }
 
-        /* Responsive */
+        /* CV Download Modal Style */
+        .cv-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cv-modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .cv-modal-content h3 {
+            color: #e67e22;
+            margin-bottom: 1rem;
+        }
+
+        .cv-modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin: 1rem 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .cv-modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
         @media (max-width: 768px) {
             .hamburger {
                 display: flex;
@@ -555,7 +586,6 @@
 </head>
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -576,11 +606,10 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="profile-img-container">
-                <img id="profileImg" src="Image/zabii.png" alt="Zohaib">
+                <img id="profileImg" src="Image/zabii.png" alt="Zohaib" onerror="this.src='https://via.placeholder.com/200?text=Zohaib'">
             </div>
             <h1>Hi, I'm <span>Zohaib</span></h1>
             <div class="typed-text">Frontend Developer | 12th Grade | Creative Designer</div>
@@ -593,7 +622,20 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- CV Download Modal -->
+    <div id="cvModal" class="cv-modal">
+        <div class="cv-modal-content">
+            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #e67e22;"></i>
+            <h3>Download My CV</h3>
+            <p>Click the button below to download my CV</p>
+            <a href="zohaib-cv.pdf" download="Zohaib_CV.pdf" class="btn btn-primary" style="margin: 1rem 0; display: inline-block;">Download CV <i class="fas fa-download"></i></a>
+            <div class="cv-modal-buttons">
+                <button id="closeModalBtn" class="btn" style="background: #ccc; color: #333;">Close</button>
+            </div>
+            <p style="font-size: 0.8rem; margin-top: 1rem; color: #999;">Note: Agar CV download nahi hota to mujhe contact karein</p>
+        </div>
+    </div>
+
     <section id="about" class="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
@@ -626,17 +668,14 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title">My Projects</h2>
             <div class="projects-grid" id="projectsGrid">
-                <!-- Projects will be loaded here -->
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
             <h2 class="section-title">What I Offer</h2>
@@ -665,7 +704,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
@@ -712,24 +750,23 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2025 Zohaib - Frontend Developer. All rights reserved.</p>
     </footer>
 
     <script>
-        // Projects Data - Restaurant wale project mein aapka link add hai ✅
+        // Projects Data - Restaurant Website Link ✅ Working
         const projects = [
             {
                 title: "Restaurant Website",
-                description: "A fully responsive restaurant website with dynamic menu cards",
+                description: "A fully responsive restaurant website with dynamic menu cards. Click to view live demo.",
                 tech: ["HTML", "CSS", "JavaScript"],
                 image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400",
                 link: "https://zabii555.github.io/Resturant-Frontend-Website/"
             },
             {
                 title: "E-commerce Store",
-                description: "Modern e-commerce platform with shopping cart",
+                description: "Modern e-commerce platform with shopping cart functionality",
                 tech: ["React", "CSS", "Firebase"],
                 image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400",
                 link: "#"
@@ -743,7 +780,7 @@
             }
         ];
 
-        // Load Projects
+        // Load Projects Function
         function loadProjects() {
             const projectsGrid = document.getElementById('projectsGrid');
             if (!projectsGrid) return;
@@ -754,65 +791,95 @@
                 const card = document.createElement('div');
                 card.className = 'project-card';
                 card.innerHTML = `
-                    <img src="${project.image}" alt="${project.title}" class="project-img">
+                    <img src="${project.image}" alt="${project.title}" class="project-img" onerror="this.src='https://via.placeholder.com/400x250?text=${project.title}'">
                     <div class="project-content">
                         <h3 class="project-title">${project.title}</h3>
                         <p class="project-desc">${project.description}</p>
                         <div class="project-tech">
                             ${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
                         </div>
-                        <a href="${project.link}" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        <a href="${project.link}" target="_blank" class="project-link" onclick="return checkLink('${project.link}', event)">View Project <i class="fas fa-arrow-right"></i></a>
                     </div>
                 `;
                 projectsGrid.appendChild(card);
             });
         }
 
-        // CV Download Function
-        document.getElementById('cvBtn').addEventListener('click', function() {
-            alert('Please add your CV file in the project folder and update the link!\n\nInstructions:\n1. Place your CV PDF in the same folder\n2. Name it "zohaib-cv.pdf"\n3. Uncomment the code in script.js');
+        // Check Link Function - Agar link # hai toh alert dikhayega
+        function checkLink(link, event) {
+            if (link === "#" || link === "") {
+                event.preventDefault();
+                alert("🚧 This project is coming soon! Stay tuned.");
+                return false;
+            }
+            return true;
+        }
+
+        // CV Modal Functions
+        const cvModal = document.getElementById('cvModal');
+        const cvBtn = document.getElementById('cvBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        if (cvBtn) {
+            cvBtn.addEventListener('click', function() {
+                cvModal.style.display = 'flex';
+            });
+        }
+
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', function() {
+                cvModal.style.display = 'none';
+            });
+        }
+
+        window.addEventListener('click', function(e) {
+            if (e.target === cvModal) {
+                cvModal.style.display = 'none';
+            }
         });
 
         // Profile Image Upload
         const profileImg = document.getElementById('profileImg');
-        profileImg.addEventListener('click', function() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.onchange = function(e) {
-                const file = e.target.files[0];
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    profileImg.src = event.target.result;
-                    localStorage.setItem('profileImage', event.target.result);
+        if (profileImg) {
+            profileImg.addEventListener('click', function() {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*';
+                input.onchange = function(e) {
+                    const file = e.target.files[0];
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        profileImg.src = event.target.result;
+                        localStorage.setItem('profileImage', event.target.result);
+                    };
+                    reader.readAsDataURL(file);
                 };
-                reader.readAsDataURL(file);
-            };
-            input.click();
-        });
+                input.click();
+            });
 
-        // Load saved profile image
-        const savedImage = localStorage.getItem('profileImage');
-        if (savedImage) {
-            profileImg.src = savedImage;
+            const savedImage = localStorage.getItem('profileImage');
+            if (savedImage) {
+                profileImg.src = savedImage;
+            }
         }
 
         // Contact Form Submit
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
-        });
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                this.reset();
+            });
+        }
 
         // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
                 navbar.style.background = 'rgba(255,255,255,0.98)';
-                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
             } else {
                 navbar.style.background = 'rgba(255,255,255,0.95)';
-                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
             }
         });
 
@@ -821,15 +888,17 @@
         const navMenu = document.querySelector('.nav-menu');
         const navLinks = document.querySelectorAll('.nav-link');
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
 
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+                if (hamburger) hamburger.classList.remove('active');
+                if (navMenu) navMenu.classList.remove('active');
             });
         });
 
@@ -887,7 +956,10 @@
             currentText = texts[count];
             letter = currentText.slice(0, ++index);
             
-            document.querySelector('.typed-text').textContent = letter;
+            const typedTextElement = document.querySelector('.typed-text');
+            if (typedTextElement) {
+                typedTextElement.textContent = letter;
+            }
             
             if (letter.length === currentText.length) {
                 count++;
@@ -906,6 +978,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadProjects();
             console.log('Portfolio loaded successfully!');
+            console.log('Restaurant Website Link: https://zabii555.github.io/Resturant-Frontend-Website/');
         });
     </script>
 </body>
