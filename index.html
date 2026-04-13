@@ -755,7 +755,7 @@
     </footer>
 
     <script>
-        // Projects Data - Restaurant Website Link ✅ Working
+        // Projects Data - Ab Naye Tab Mein Khulega ✅
         const projects = [
             {
                 title: "Restaurant Website",
@@ -798,21 +798,24 @@
                         <div class="project-tech">
                             ${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
                         </div>
-                        <a href="${project.link}" target="_blank" class="project-link" onclick="return checkLink('${project.link}', event)">View Project <i class="fas fa-arrow-right"></i></a>
+                        <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="project-link" onclick="return openInNewTab('${project.link}', event)">View Project <i class="fas fa-arrow-right"></i></a>
                     </div>
                 `;
                 projectsGrid.appendChild(card);
             });
         }
 
-        // Check Link Function - Agar link # hai toh alert dikhayega
-        function checkLink(link, event) {
+        // Yeh function ensure karega ke link naye tab mein khule aur portfolio open rahe
+        function openInNewTab(link, event) {
             if (link === "#" || link === "") {
                 event.preventDefault();
                 alert("🚧 This project is coming soon! Stay tuned.");
                 return false;
             }
-            return true;
+            // Link naye tab mein khulega, portfolio wahi rahega
+            window.open(link, '_blank');
+            event.preventDefault();
+            return false;
         }
 
         // CV Modal Functions
