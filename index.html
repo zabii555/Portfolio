@@ -559,6 +559,32 @@
             border-top: 1px solid rgba(230,126,34,0.1);
         }
 
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background: #128C7E;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -607,6 +633,14 @@
 
             .projects-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                bottom: 15px;
+                right: 15px;
             }
         }
     </style>
@@ -764,6 +798,11 @@
     <footer class="footer">
         <p>&copy; 2025 Zohaib - Frontend Developer. All rights reserved.</p>
     </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/923280731475" target="_blank" rel="noopener noreferrer" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
         // Projects Data with HD Images 🖼️
