@@ -99,11 +99,11 @@ function App() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section - ONLY ONE COPY */}
       <section className="features-section" id="features">
         <div className="container">
           <div className="section-header">
-            <h2>Why Choose Velocity?</h2>
+            <h2>Why Choose <span className="gradient">Velocity?</span></h2>
             <p>Experience the difference with our premium services</p>
           </div>
           <div className="features-grid">
@@ -235,8 +235,8 @@ function App() {
         </div>
       </section>
 
-       {/* Footer */}
-       <footer className="footer">
+      {/* Footer */}
+      <footer className="footer">
         <div className="footer-content">
           <div className="footer-section">
             <h3><i className="fas fa-car-side"></i> VELOCITY</h3>
@@ -269,44 +269,9 @@ function App() {
           <p>&copy; 2024 VELOCITY | All Rights Reserved | Designed for Car Enthusiasts</p>
         </div>
       </footer>
-      
 
-     
-      
-
+      {/* Car Detail Modal */}
       {selectedCar && <CarDetail car={selectedCar} onClose={closeDetail} />}
-            {/* Features Section */}
-      <section className="features-section" id="features">
-        <div className="container">
-          <div className="section-header">
-            <h2>Why Choose <span className="gradient">Velocity?</span></h2>
-            <p>Experience the difference with our premium services</p>
-          </div>
-          <div className="features-grid">
-            <div className="feature-card">
-              <div className="feature-icon">
-                <i className="fas fa-tachometer-alt"></i>
-              </div>
-              <h3>Unmatched Performance</h3>
-              <p>Every car is tested to deliver maximum power, speed, and precision handling.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">
-                <i className="fas fa-shield-alt"></i>
-              </div>
-              <h3>Premium Warranty</h3>
-              <p>5-year comprehensive warranty on all vehicles with 24/7 roadside assistance.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">
-                <i className="fas fa-headset"></i>
-              </div>
-              <h3>24/7 Support</h3>
-              <p>Dedicated concierge service available anytime, anywhere in the world.</p>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
