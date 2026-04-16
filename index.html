@@ -332,6 +332,7 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
             transition: all 0.3s;
             border: 1px solid rgba(230,126,34,0.1);
+            cursor: pointer;
         }
 
         .project-card:hover {
@@ -559,7 +560,6 @@
             border-top: 1px solid rgba(230,126,34,0.1);
         }
 
-        /* WhatsApp Floating Button */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
@@ -799,13 +799,12 @@
         <p>&copy; 2025 Zohaib - Frontend Developer. All rights reserved.</p>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/923280731475" target="_blank" rel="noopener noreferrer" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
-        // Projects Data with HD Images - 2 PROJECTS (Cars Website REMOVED!)
+        // ========== PROJECTS DATA - 3 PROJECTS with HD VEGETABLE IMAGE ==========
         const projects = [
             {
                 title: "Restaurant Website",
@@ -820,6 +819,13 @@
                 tech: ["HTML", "CSS", "JavaScript", "Bootstrap Icons"],
                 image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=800&h=500&fit=crop",
                 link: "https://zabii555.github.io/EstateFlow-House-Rental-Website/"
+            },
+            {
+                title: "FreshVeg - Organic Vegetable Shop",
+                description: "Complete React e-commerce website with shopping cart, payment gateway, product search, category filters, and client reviews system.",
+                tech: ["React", "Vite", "CSS3", "JavaScript"],
+                image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&h=500&fit=crop",
+                link: "https://zabii555.github.io/freshveg/"
             }
         ];
 
@@ -833,6 +839,9 @@
             projects.forEach(project => {
                 const card = document.createElement('div');
                 card.className = 'project-card';
+                card.onclick = () => {
+                    window.open(project.link, '_blank');
+                };
                 card.innerHTML = `
                     <img src="${project.image}" alt="${project.title}" class="project-img" loading="lazy">
                     <div class="project-content">
@@ -841,7 +850,7 @@
                         <div class="project-tech">
                             ${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
                         </div>
-                        <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">View Project <i class="fas fa-arrow-right"></i></a>
                     </div>
                 `;
                 projectsGrid.appendChild(card);
@@ -977,7 +986,7 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             loadProjects();
-            console.log('✨ Modern Portfolio with HD Images loaded successfully!');
+            console.log('✨ Portfolio with 3 Projects (FreshVeg with HD Image!) loaded successfully!');
         });
     </script>
 </body>
