@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zohaib | Modern Frontend Developer Portfolio</title>
+    <title>Zohaib Malik | Frontend Developer Portfolio</title>
     <link rel="icon" type="image/png" href="Image/za.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -18,27 +18,56 @@
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #fff;
             background: #0f0f0f;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #e67e22;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+            z-index: 9999;
+        }
+
+        .cursor-dot {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: #e67e22;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+        }
+
+        @media (max-width: 768px) {
+            body { cursor: auto; }
+            .cursor, .cursor-dot { display: none; }
         }
 
         ::-webkit-scrollbar {
             width: 8px;
         }
-
         ::-webkit-scrollbar-track {
             background: #1a1a1a;
         }
-
         ::-webkit-scrollbar-thumb {
             background: #e67e22;
             border-radius: 10px;
         }
 
+        /* Navbar */
         .navbar {
             background: rgba(15, 15, 15, 0.95);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(230,126,34,0.2);
             position: fixed;
             width: 100%;
             top: 0;
@@ -73,7 +102,7 @@
             text-decoration: none;
             color: #fff;
             font-weight: 500;
-            transition: all 0.3s;
+            transition: color 0.3s;
             position: relative;
         }
 
@@ -111,6 +140,7 @@
             transition: 0.3s;
         }
 
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
@@ -130,14 +160,6 @@
             background: radial-gradient(circle at 20% 50%, rgba(230,126,34,0.1) 0%, transparent 50%);
         }
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 80% 80%, rgba(243,156,18,0.08) 0%, transparent 50%);
-        }
-
         .hero-content {
             text-align: center;
             color: white;
@@ -153,6 +175,7 @@
             background: linear-gradient(135deg, #e67e22, #f39c12);
             padding: 3px;
             transition: transform 0.3s;
+            cursor: pointer;
         }
 
         .profile-img-container:hover {
@@ -253,6 +276,7 @@
             border-radius: 3px;
         }
 
+        /* About */
         .about {
             background: #0a0a0a;
         }
@@ -315,6 +339,7 @@
             transform: translateY(-3px);
         }
 
+        /* Projects */
         .projects {
             background: #0f0f0f;
         }
@@ -396,6 +421,7 @@
             gap: 10px;
         }
 
+        /* Services */
         .services {
             background: #0a0a0a;
         }
@@ -440,6 +466,7 @@
             color: #aaa;
         }
 
+        /* Contact */
         .contact {
             background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
             color: white;
@@ -499,6 +526,7 @@
             color: #e67e22;
             font-size: 1.3rem;
             transition: all 0.3s;
+            text-decoration: none;
         }
 
         .social-link:hover {
@@ -507,40 +535,48 @@
             transform: translateY(-3px);
         }
 
+        /* Professional Contact Form */
         .contact-form {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
 
+        .form-group {
+            position: relative;
+        }
+
         .contact-form input,
         .contact-form textarea {
-            padding: 12px;
-            border: none;
-            border-radius: 12px;
-            font-family: inherit;
+            width: 100%;
+            padding: 14px 18px;
             background: #1a1a1a;
-            color: white;
             border: 1px solid rgba(230,126,34,0.2);
+            border-radius: 12px;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
         }
 
         .contact-form input:focus,
         .contact-form textarea:focus {
             outline: none;
             border-color: #e67e22;
+            box-shadow: 0 0 0 2px rgba(230,126,34,0.1);
         }
 
         .contact-form textarea {
-            height: 150px;
+            height: 120px;
             resize: vertical;
         }
 
         .contact-form button {
             background: linear-gradient(135deg, #e67e22, #f39c12);
-            color: white;
-            padding: 12px;
             border: none;
+            padding: 14px;
             border-radius: 12px;
+            color: white;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -647,6 +683,9 @@
 </head>
 <body>
 
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -673,7 +712,7 @@
                 <img id="profileImg" src="Image/zabii.png" alt="Zohaib" onerror="this.src='https://via.placeholder.com/180?text=Z'">
             </div>
             <h1>Hi, I'm <span>Zohaib</span></h1>
-            <div class="typed-text">Frontend Developer | 12th Grade | Creative Designer</div>
+            <div class="typed-text">Frontend Developer | React JS | Web Designer</div>
             <div class="btn-group">
                 <a href="#contact" class="btn btn-primary">Hire Me</a>
                 <a href="#projects" class="btn btn-secondary">View Work</a>
@@ -687,13 +726,13 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>I'm Zohaib, A Passionate Frontend Developer</h3>
-                    <p>I'm a 12th-grade student with a burning passion for web development. I create beautiful, responsive, and user-friendly websites that leave a lasting impression.</p>
-                    <p>Despite my young age, I've already completed numerous projects and continuously learning new technologies to stay ahead in the field.</p>
+                    <p>I'm a frontend developer specializing in React. I create beautiful, responsive, and user-friendly websites that leave a lasting impression.</p>
+                    <p>I've completed numerous projects including e-commerce websites, luxury car showrooms, footwear brand websites, and more.</p>
                     <ul class="info-list">
-                        <li><i class="fas fa-user"></i> <strong>Name:</strong> Zohaib</li>
-                        <li><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> 12th Grade</li>
+                        <li><i class="fas fa-user"></i> <strong>Name:</strong> Zohaib Malik</li>
                         <li><i class="fas fa-code"></i> <strong>Role:</strong> Frontend Developer</li>
                         <li><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Pakistan</li>
+                        <li><i class="fas fa-envelope"></i> <strong>Email:</strong> zm6133971@gmail.com</li>
                     </ul>
                 </div>
                 <div>
@@ -716,8 +755,7 @@
     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title">My Projects</h2>
-            <div class="projects-grid" id="projectsGrid">
-            </div>
+            <div class="projects-grid" id="projectsGrid"></div>
         </div>
     </section>
 
@@ -742,8 +780,8 @@
                 </div>
                 <div class="service-card">
                     <i class="fas fa-rocket"></i>
-                    <h3>Performance Optimization</h3>
-                    <p>Fast loading and optimized websites</p>
+                    <h3>E-commerce Solutions</h3>
+                    <p>Complete online stores with cart and payment</p>
                 </div>
             </div>
         </div>
@@ -778,17 +816,23 @@
                     <div>
                         <h3>Follow Me</h3>
                         <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/zabii555" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/zohaib-webdevalpor-940bb7403/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
                             <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                             <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
                 <form class="contact-form" id="contactForm">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" required></textarea>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" required></textarea>
+                    </div>
                     <button type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
@@ -796,7 +840,7 @@
     </section>
 
     <footer class="footer">
-        <p>&copy; 2025 Zohaib - Frontend Developer. All rights reserved.</p>
+        <p>&copy; 2025 Zohaib Malik - Frontend Developer. All rights reserved.</p>
     </footer>
 
     <a href="https://wa.me/923280731475" target="_blank" rel="noopener noreferrer" class="whatsapp-float">
@@ -804,7 +848,7 @@
     </a>
 
     <script>
-        // ========== PROJECTS DATA - 3 PROJECTS with HD VEGETABLE IMAGE ==========
+        // Projects Data - 5 Projects
         const projects = [
             {
                 title: "Restaurant Website",
@@ -821,36 +865,38 @@
                 link: "https://zabii555.github.io/EstateFlow-House-Rental-Website/"
             },
             {
-                title: "FreshVeg - Organic Vegetable Shop",
-                description: "Complete React e-commerce website with shopping cart, payment gateway, product search, category filters, and client reviews system.",
+                title: "FreshVeg - Organic Shop",
+                description: "Complete React e-commerce website with shopping cart, payment gateway, product search, category filters, and client reviews.",
                 tech: ["React", "Vite", "CSS3", "JavaScript"],
                 image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&h=500&fit=crop",
                 link: "https://zabii555.github.io/freshveg/"
             },
-
- {
-        title: "AutoElite - Luxury Car Showroom",
-        description: "Premium luxury car showroom featuring Lamborghini, Ferrari, Porsche, and more. Modern UI with car cards, details modal, tools, and testimonials.",
-        tech: ["HTML", "CSS", "JavaScript", "Responsive Design"],
-        image: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&h=500&fit=crop",
-        link: "https://zabii555.github.io/luxury-drive/"
-    }
-            
+            {
+                title: "AutoElite - Luxury Cars",
+                description: "Premium luxury car showroom featuring Lamborghini, Ferrari, Porsche, and more. Car cards, modal details, tools section.",
+                tech: ["HTML", "CSS", "JavaScript"],
+                image: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&h=500&fit=crop",
+                link: "https://zabii555.github.io/luxury-drive/"
+            },
+            {
+                title: "Zest - Premium Footwear",
+                description: "Modern footwear brand website with luxury shoes collection for men and women. Product grid, auto-scrolling testimonials.",
+                tech: ["HTML", "CSS", "JavaScript"],
+                image: "https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg?w=800&h=500&fit=crop",
+                link: "https://zabii555.github.io/zest-footwear/"
+            }
         ];
 
-        // Load Projects Function
+        // Load Projects
         function loadProjects() {
             const projectsGrid = document.getElementById('projectsGrid');
             if (!projectsGrid) return;
-
             projectsGrid.innerHTML = '';
             
             projects.forEach(project => {
                 const card = document.createElement('div');
                 card.className = 'project-card';
-                card.onclick = () => {
-                    window.open(project.link, '_blank');
-                };
+                card.onclick = () => window.open(project.link, '_blank');
                 card.innerHTML = `
                     <img src="${project.image}" alt="${project.title}" class="project-img" loading="lazy">
                     <div class="project-content">
@@ -859,7 +905,7 @@
                         <div class="project-tech">
                             ${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
                         </div>
-                        <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">View Project <i class="fas fa-arrow-right"></i></a>
+                        <a href="${project.link}" target="_blank" class="project-link" onclick="event.stopPropagation()">View Project <i class="fas fa-arrow-right"></i></a>
                     </div>
                 `;
                 projectsGrid.appendChild(card);
@@ -884,14 +930,11 @@
                 };
                 input.click();
             });
-
             const savedImage = localStorage.getItem('profileImage');
-            if (savedImage) {
-                profileImg.src = savedImage;
-            }
+            if (savedImage) profileImg.src = savedImage;
         }
 
-        // Contact Form Submit
+        // Contact Form
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
@@ -901,7 +944,7 @@
             });
         }
 
-        // Mobile Menu Toggle
+        // Mobile Menu
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -920,30 +963,24 @@
             });
         });
 
-        // Smooth Scrolling
+        // Smooth Scroll
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetId = link.getAttribute('href');
                 const targetSection = document.querySelector(targetId);
-                
                 if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-                
                 navLinks.forEach(l => l.classList.remove('active'));
                 link.classList.add('active');
             });
         });
 
-        // Update Active Link on Scroll
+        // Active Link on Scroll
         window.addEventListener('scroll', () => {
             let current = '';
             const sections = document.querySelectorAll('section');
-            
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
@@ -951,7 +988,6 @@
                     current = section.getAttribute('id');
                 }
             });
-            
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
@@ -960,42 +996,52 @@
             });
         });
 
-        // Typing Animation Effect
-        const texts = ["Frontend Developer", "12th Grade Student", "Creative Designer", "Problem Solver"];
-        let count = 0;
-        let index = 0;
-        let currentText = '';
-        let letter = '';
-
+        // Typing Animation
+        const texts = ["Frontend Developer", "React JS Specialist", "Web Designer", "Problem Solver"];
+        let count = 0, index = 0, currentText = '', letter = '';
         function type() {
-            if (count === texts.length) {
-                count = 0;
-            }
+            if (count === texts.length) count = 0;
             currentText = texts[count];
             letter = currentText.slice(0, ++index);
-            
             const typedTextElement = document.querySelector('.typed-text');
-            if (typedTextElement) {
-                typedTextElement.textContent = letter;
-            }
-            
+            if (typedTextElement) typedTextElement.textContent = letter;
             if (letter.length === currentText.length) {
                 count++;
                 index = 0;
-                setTimeout(() => {
-                    type();
-                }, 2000);
+                setTimeout(() => type(), 2000);
             } else {
-                setTimeout(type, 100);
+                setTimeout(type(), 100);
             }
         }
-
         type();
+
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+        if (cursor && cursorDot) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+            });
+            const hoverElements = document.querySelectorAll('button, a, .project-card, .btn');
+            hoverElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.width = '60px';
+                    cursor.style.height = '60px';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.width = '40px';
+                    cursor.style.height = '40px';
+                });
+            });
+        }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             loadProjects();
-            console.log('✨ Portfolio with 3 Projects (FreshVeg with HD Image!) loaded successfully!');
+            console.log('✨ Portfolio with 5 Projects loaded successfully!');
         });
     </script>
 </body>
